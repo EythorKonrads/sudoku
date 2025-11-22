@@ -8,7 +8,7 @@ import { useAuth } from '@/contexts/AuthContext';
 const Home: NextPage = () => {
   const { user, loading, createGuest } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [isCreatingGuest, setIsCreatingGuest] = useState(false);
+  const [_isCreatingGuest, setIsCreatingGuest] = useState(false);
 
   // Show auth modal immediately if not authenticated
   useEffect(() => {
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
     }
   }, [loading, user]);
 
-  const handlePlayAsGuest = async () => {
+  const _handlePlayAsGuest = async () => {
     setIsCreatingGuest(true);
     try {
       await createGuest();

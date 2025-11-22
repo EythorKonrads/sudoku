@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { PuzzleData, Board, CellData } from '@/types/game';
+import { PuzzleData, Board } from '@/types/game';
 
 export const useGame = (puzzleData: PuzzleData | null) => {
   const initializeBoard = useCallback((): Board => {

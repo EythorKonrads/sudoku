@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 
 interface SaveGameSessionParams {
@@ -7,7 +7,7 @@ interface SaveGameSessionParams {
   mistakes: number;
   timeSpent: number;
   completed: boolean;
-  boardState?: any;
+  boardState?: Record<string, unknown>;
   score?: number;
 }
 

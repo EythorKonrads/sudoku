@@ -91,7 +91,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', allo
 
         {isUpgrading && (
           <div className={styles.guestNotice}>
-            <p><strong>You're currently playing as a guest.</strong></p>
+            <p><strong>You&apos;re currently playing as a guest.</strong></p>
             <p>Create an account to save your progress permanently!</p>
           </div>
         )}
@@ -155,7 +155,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login', allo
           <div className={styles.switchMode}>
             {mode === 'login' ? (
               <p>
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <button type="button" onClick={() => setMode('signup')}>
                   Sign Up
                 </button>

@@ -37,6 +37,7 @@ export function isValidUsername(username: string): boolean {
  * @returns The deleted user data
  */
 export async function deleteUser(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   supabase: any,
   identifier: { userId?: string; email?: string; username?: string }
 ): Promise<{ id: string; username: string; email: string; isGuest: boolean }> {
