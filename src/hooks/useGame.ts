@@ -58,7 +58,6 @@ export const useGame = (puzzleData: PuzzleData | null) => {
         return prevBoard;
       }
 
-      const wasError = newBoard[row][col].isError;
       newBoard[row][col].value = value;
 
       // Check if the value is correct
@@ -68,8 +67,8 @@ export const useGame = (puzzleData: PuzzleData | null) => {
         const isWrong = value !== correctValue;
         newBoard[row][col].isError = isWrong;
         
-        // Only increment mistake count if this is a new mistake
-        if (isWrong && !wasError) {
+        // Increment mistake count for each unique wrong input
+        if (isWrong) {
           const mistakeKey = `${row}-${col}-${value}`;
           if (!mistakeCountedRef.current.has(mistakeKey)) {
             mistakeCountedRef.current.add(mistakeKey);
