@@ -7,7 +7,7 @@ A Next.js-based Sudoku application with Prisma ORM and Supabase PostgreSQL datab
 - **Framework**: Next.js 15 with TypeScript
 - **Database**: Supabase (PostgreSQL)
 - **ORM**: Prisma 7 with PostgreSQL adapter
-- **Styling**: Tailwind CSS 4
+- **Styling**: SCSS
 - **Testing**: Playwright
 
 ## Database Configuration
@@ -55,7 +55,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Prisma Documentation](https://www.prisma.io/docs)
 - [Supabase Documentation](https://supabase.com/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
 ## Testing
 
