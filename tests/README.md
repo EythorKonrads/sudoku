@@ -10,26 +10,13 @@ This directory contains end-to-end tests that verify the database setup and API 
 npm install
 ```
 
-### 2. Configure Environment Variables
-
-Create a `.env.local` file in the root of the project with the following variables:
-
-```env
-# Database connection
-DATABASE_URL="postgresql://user:password@host:port/database"
-
-# Supabase configuration
-NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
-```
-
-### 3. Generate Prisma Client
+### 2. Generate Prisma Client
 
 ```bash
 npx prisma generate
 ```
 
-### 4. Run the Tests
+### 3. Run the Tests
 
 ```bash
 npm run test:e2e
