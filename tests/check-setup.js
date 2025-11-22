@@ -4,6 +4,7 @@
  * Pre-flight check script to verify environment setup before running tests
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 

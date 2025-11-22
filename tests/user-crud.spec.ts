@@ -189,7 +189,7 @@ test.describe('User CRUD Operations', () => {
         await request.delete(`/api/auth/delete`, {
           data: { userId: testUserId },
         });
-      } catch (error) {
+      } catch {
         console.log('Cleanup failed, user may already be deleted');
       }
     }

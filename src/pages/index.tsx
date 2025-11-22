@@ -6,9 +6,8 @@ import AuthModal from '../components/AuthModal';
 import { useAuth } from '@/contexts/AuthContext';
 
 const Home: NextPage = () => {
-  const { user, loading, createGuest } = useAuth();
+  const { user, loading } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [_isCreatingGuest, setIsCreatingGuest] = useState(false);
 
   // Show auth modal immediately if not authenticated
   useEffect(() => {
@@ -19,18 +18,6 @@ const Home: NextPage = () => {
       setShowAuthModal(false);
     }
   }, [loading, user]);
-
-  const _handlePlayAsGuest = async () => {
-    setIsCreatingGuest(true);
-    try {
-      await createGuest();
-      setShowAuthModal(false);
-    } catch (error) {
-      console.error('Failed to create guest user:', error);
-    } finally {
-      setIsCreatingGuest(false);
-    }
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center">

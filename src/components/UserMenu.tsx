@@ -45,22 +45,6 @@ export default function UserMenu() {
     setShowDropdown(false);
   };
 
-  const _handleLogin = () => {
-    setAuthModalMode('login');
-    setShowAuthModal(true);
-    setShowDropdown(false);
-  };
-
-  const _handleSignup = () => {
-    setAuthModalMode('signup');
-    setShowAuthModal(true);
-    setShowDropdown(false);
-  };
-
-  const _handlePlayAsGuest = async () => {
-    await createGuest();
-  };
-
   if (loading) {
     return null;
   }
