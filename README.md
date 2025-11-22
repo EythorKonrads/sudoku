@@ -17,16 +17,6 @@ This project uses Supabase for database and authentication:
 - Direct database queries via `@supabase/supabase-js`
 - Server-side authentication via `@supabase/ssr`
 
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```bash
-NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
-SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
-```
-
 ## Getting Started
 
 1. Install dependencies:
