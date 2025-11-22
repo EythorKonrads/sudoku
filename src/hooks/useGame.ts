@@ -3,7 +3,7 @@ import { PuzzleData, Board, CellData } from '@/types/game';
 
 export const useGame = (puzzleData: PuzzleData | null) => {
   const initializeBoard = useCallback((): Board => {
-    if (!puzzleData) {
+    if (!puzzleData || !puzzleData.puzzle) {
       return Array(9).fill(null).map(() =>
         Array(9).fill(null).map(() => ({
           value: null,
@@ -48,7 +48,7 @@ export const useGame = (puzzleData: PuzzleData | null) => {
   }, []);
 
   const setValue = useCallback((row: number, col: number, value: number | null) => {
-    if (!puzzleData) return;
+    if (!puzzleData || !puzzleData.solution) return;
 
     setBoard((prevBoard) => {
       const newBoard = prevBoard.map(r => r.map(c => ({ ...c })));
@@ -90,7 +90,7 @@ export const useGame = (puzzleData: PuzzleData | null) => {
   }, [selectedCell, setValue]);
 
   const checkWin = useCallback((): boolean => {
-    if (!puzzleData) return false;
+    if (!puzzleData || !puzzleData.solution) return false;
 
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
@@ -105,7 +105,7 @@ export const useGame = (puzzleData: PuzzleData | null) => {
   }, [board, puzzleData]);
 
   const cheat = useCallback(() => {
-    if (!puzzleData) return;
+    if (!puzzleData || !puzzleData.solution) return;
 
     setBoard((prevBoard) => {
       const newBoard = prevBoard.map(r => r.map(c => ({ ...c })));

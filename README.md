@@ -1,31 +1,30 @@
 # Sudoku Game
 
-A Next.js-based Sudoku application with Prisma ORM and Supabase PostgreSQL database.
+A Next.js-based Sudoku application with Supabase PostgreSQL database.
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with TypeScript
 - **Database**: Supabase (PostgreSQL)
-- **ORM**: Prisma 7 with PostgreSQL adapter
+- **Authentication**: Supabase Auth
 - **Styling**: SCSS
 - **Testing**: Playwright
 
 ## Database Configuration
 
-This project uses Prisma as the ORM to interact with a Supabase PostgreSQL database. The setup includes:
+This project uses Supabase for database and authentication:
 
-- Prisma Client with `@prisma/adapter-pg` for PostgreSQL connection
-- Connection pooling via `pg` driver
-- Supabase authentication via `@supabase/ssr` and `@supabase/supabase-js`
+- Direct database queries via `@supabase/supabase-js`
+- Server-side authentication via `@supabase/ssr`
 
 ### Environment Variables
 
 Create a `.env` file in the root directory:
 
 ```bash
-DATABASE_URL="postgresql://[user]:[password]@[host]:[port]/[database]"
 NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
 NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
+SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 ```
 
 ## Getting Started
@@ -36,13 +35,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
 npm install
 ```
 
-2. Generate Prisma Client:
-
-```bash
-npx prisma generate
-```
-
-3. Run the development server:
+2. Run the development server:
 
 ```bash
 npm run dev
@@ -53,7 +46,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Prisma Documentation](https://www.prisma.io/docs)
 - [Supabase Documentation](https://supabase.com/docs)
 
 ## Testing

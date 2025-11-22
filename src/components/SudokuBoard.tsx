@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabaseBrowser'
-import { User } from '@supabase/supabase-js'
 import { PuzzleData } from '@/types/game'
 import { useGame } from '@/hooks/useGame'
+import { useGameSession } from '@/hooks/useGameSession'
+import { useAuth } from '@/contexts/AuthContext'
 import { calculateScore } from '@/lib/scoring'
 import Cell from './Cell'
 import NumberPad from './NumberPad'
@@ -10,8 +10,8 @@ import WinPopup from './WinPopup'
 import styles from './SudokuBoard.module.scss'
 
 const SudokuBoard: React.FC = () => {
-  const supabase = createClient()
-  const [user, setUser] = useState<User | null>(null)
+  const { user } = useAuth()
+  const { saveGameSession } = useGameSession()
   const [puzzle, setPuzzle] = useState<PuzzleData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasWon, setHasWon] = useState(false)
@@ -66,12 +66,8 @@ const SudokuBoard: React.FC = () => {
   }, [startTime, hasWon])
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user)
-    })
-
     loadNewPuzzle()
-  }, [supabase])
+  }, [])
 
   useEffect(() => {
     if (puzzle && !hasWon) {
@@ -81,12 +77,25 @@ const SudokuBoard: React.FC = () => {
         setFinalTime(elapsedTime)
         const score = calculateScore(elapsedTime, mistakeCount)
         setFinalScore(score)
+        
+        // Save game session
+        if (user) {
+          saveGameSession({
+            puzzleId: puzzle.id,
+            difficulty: puzzle.difficulty,
+            mistakes: mistakeCount,
+            timeSpent: elapsedTime,
+            completed: true,
+            score,
+          }).catch(err => console.error('Failed to save game session:', err))
+        }
+        
         setTimeout(() => {
           setShowWinPopup(true)
         }, 100)
       }
     }
-  }, [board, checkWin, puzzle, hasWon, mistakeCount, elapsedTime])
+  }, [board, checkWin, puzzle, hasWon, mistakeCount, elapsedTime, user, saveGameSession])
 
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60)
