@@ -104,9 +104,7 @@ const SudokuBoard: React.FC = () => {
   }
 
   const handleCellClick = (row: number, col: number) => {
-    if (!board[row][col].isInitial) {
-      selectCell(row, col)
-    }
+    selectCell(row, col)
   }
 
   if (isLoading) {
@@ -147,20 +145,40 @@ const SudokuBoard: React.FC = () => {
       <div className={styles['sudoku-board__container']}>
         <div className={styles['sudoku-board__grid']}>
           {board.map((row, rowIndex) =>
-            row.map((cell, colIndex) => (
-              <Cell
-                key={`${rowIndex}-${colIndex}`}
-                value={cell.value}
-                isInitial={cell.isInitial}
-                isSelected={
-                  selectedCell?.row === rowIndex && selectedCell?.col === colIndex
-                }
-                isError={cell.isError}
-                onClick={() => handleCellClick(rowIndex, colIndex)}
-                row={rowIndex}
-                col={colIndex}
-              />
-            ))
+            row.map((cell, colIndex) => {
+              const isSelected = selectedCell?.row === rowIndex && selectedCell?.col === colIndex
+              const selectedValue = selectedCell ? board[selectedCell.row][selectedCell.col].value : null
+              
+              // Calculate 3x3 box boundaries for selected cell
+              const selectedBoxRow = selectedCell ? Math.floor(selectedCell.row / 3) : null
+              const selectedBoxCol = selectedCell ? Math.floor(selectedCell.col / 3) : null
+              const currentBoxRow = Math.floor(rowIndex / 3)
+              const currentBoxCol = Math.floor(colIndex / 3)
+              
+              const isMatchingValue = !!(selectedCell && selectedValue && 
+                cell.value === selectedValue && cell.value !== null)
+              
+              const isHighlighted = !!(selectedCell && selectedValue && (
+                rowIndex === selectedCell.row || 
+                colIndex === selectedCell.col || 
+                (selectedBoxRow === currentBoxRow && selectedBoxCol === currentBoxCol)
+              ))
+              
+              return (
+                <Cell
+                  key={`${rowIndex}-${colIndex}`}
+                  value={cell.value}
+                  isInitial={cell.isInitial}
+                  isSelected={isSelected}
+                  isHighlighted={isHighlighted && !isSelected && !isMatchingValue}
+                  isMatchingValue={isMatchingValue && !isSelected}
+                  isError={cell.isError}
+                  onClick={() => handleCellClick(rowIndex, colIndex)}
+                  row={rowIndex}
+                  col={colIndex}
+                />
+              )
+            })
           )}
         </div>
       </div>

@@ -18,6 +18,14 @@
     background-color: var(--color-bg-blue-selected);
   }
 
+  &--highlighted {
+    background-color: rgba(187, 222, 251, 0.4);
+  }
+
+  &--matching-value {
+    background-color: rgba(187, 222, 251, 0.7);
+  }
+
   &--initial {
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);

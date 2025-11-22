@@ -5,6 +5,8 @@ interface CellProps {
   value: number | null;
   isInitial: boolean;
   isSelected: boolean;
+  isHighlighted?: boolean;
+  isMatchingValue?: boolean;
   isError: boolean;
   onClick: () => void;
   row: number;
@@ -15,6 +17,8 @@ const Cell: React.FC<CellProps> = ({
   value,
   isInitial,
   isSelected,
+  isHighlighted,
+  isMatchingValue,
   isError,
   onClick,
   row,
@@ -26,6 +30,8 @@ const Cell: React.FC<CellProps> = ({
   const classNames = [
     styles.cell,
     isSelected && styles['cell--selected'],
+    isMatchingValue && styles['cell--matching-value'],
+    isHighlighted && !isMatchingValue && styles['cell--highlighted'],
     isInitial && styles['cell--initial'],
     !isInitial && styles['cell--user-input'],
     isError && styles['cell--error'],
