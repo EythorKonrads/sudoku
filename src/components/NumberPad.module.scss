@@ -1,0 +1,49 @@
+.number-pad {
+  margin-top: var(--spacing-lg);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--spacing-sm);
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  &__button {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    border: var(--border-width-medium) solid var(--color-border-light);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-white);
+    cursor: pointer;
+    transition: all var(--transition-base);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-bg-blue-light);
+      border-color: var(--color-border-primary);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--color-bg-blue);
+    }
+
+    &:disabled {
+      background-color: var(--color-bg-gray-dark);
+      color: var(--color-text-light);
+      cursor: not-allowed;
+    }
+
+    &--clear {
+      &:hover:not(:disabled) {
+        background-color: var(--color-bg-red-light);
+        border-color: var(--color-border-error);
+      }
+
+      &:active:not(:disabled) {
+        background-color: var(--color-bg-red);
+      }
+    }
+  }
+}

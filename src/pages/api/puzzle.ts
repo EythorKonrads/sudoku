@@ -10,7 +10,15 @@ export default async function handler(
   }
 
   try {
-    const puzzle = await prisma.sudoku_450_000.findFirst()
+    const { difficulty } = req.query
+    const difficultyValue = difficulty ? String(difficulty) : '0.0'
+
+    const puzzle = await prisma.sudoku_450_000.findFirst({
+      where: {
+        difficulty: difficultyValue
+      },
+      skip: Math.floor(Math.random() * 100) // Add some randomness
+    })
 
     if (!puzzle) {
       return res.status(404).json({ error: 'No puzzle found' })
