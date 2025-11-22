@@ -44,12 +44,3 @@ You can also check the environment setup separately:
 ```bash
 npm run test:setup
 ```
-
-## Test Execution Order
-
-The tests are organized into projects that run in a specific order:
-
-1. **Setup Project** (`setup.spec.ts`) - Runs first, validates environment variables
-2. **Chromium Project** (all other tests) - Runs after setup passes, tests database and API functionality
-
-This ensures that if your environment is misconfigured, you'll get immediate feedback before attempting to run the full test suite.
