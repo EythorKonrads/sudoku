@@ -144,3 +144,8 @@ test-results/
 /src/generated/prisma
 
 playwright-report/
+
+# Cloudflare: adapter build output, local Wrangler data and secrets
+.open-next
+.wrangler
+.dev.vars*

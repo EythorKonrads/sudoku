@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@opennextjs/cloudflare": "^1.20.16",
     "@playwright/test": "^1.56.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.6.0",
@@ -21,13 +22,14 @@
     "autoprefixer": "^10.4.21",
     "dotenv": "^16.4.7",
     "eslint": "^9",
-    "eslint-config-next": "15.5.5",
-    "next": "^15.5.5",
+    "eslint-config-next": "15.5.29",
+    "next": "^15.5.29",
     "playwright": "^1.56.0",
     "postcss": "^8.5.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.158.0"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
