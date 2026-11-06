@@ -7,6 +7,8 @@
   // The site only lives on its own domain; PR previews get their own URLs
   "workers_dev": false,
   "preview_urls": true,
+  // Required by `wrangler preview`; previews need no settings of their own
+  "previews": {},
   "routes": [{ "pattern": "sudoku.eythorkonrads.com", "custom_domain": true }],
   "assets": {
     "directory": ".open-next/assets",
